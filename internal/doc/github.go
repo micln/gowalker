@@ -45,7 +45,10 @@ func getGithubRevision(importPath, tag string) (string, error) {
 		return "", fmt.Errorf("fail to get revision(%s): %v", importPath, err)
 	}
 
-	i := bytes.Index(data, []byte(`commit-links-group BtnGroup`))
+	// clog.Info("getGithubRevision.resp: %s", data)
+	// stdlog.Printf("getGithubRevision.resp: %s\n", data)
+
+	i := bytes.Index(data, []byte(`d-none d-md-block flex-shrink-0`))
 	if i == -1 {
 		return "", fmt.Errorf("cannot find locater in page: %s", importPath)
 	}
